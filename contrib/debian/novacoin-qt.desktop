@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Julian
+Comment=Julian P2P Cryptocurrency
+Comment[ru]=Julian, P2P криптовалюта
+Comment[fr]=Julian, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Julian, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/Julian-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/Julian80.xpm
+MimeType=x-scheme-handler/Julian;
+Categories=Office;

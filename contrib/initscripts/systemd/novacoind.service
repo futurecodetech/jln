@@ -1,0 +1,11 @@
+[Unit]
+Description=Julian daemon serivce
+After=network.target
+
+[Service]
+Type=simple
+User=Julian
+ExecStart=/opt/Julian/Juliand
+
+[Install]
+WantedBy=multi-user.target

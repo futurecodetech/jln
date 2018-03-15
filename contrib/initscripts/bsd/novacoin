@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# PROVIDE: Julian
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# Julian_enable (bool): Set to NO by default. Set this variable to YES if you want to enable Julian service.
+# Julian_config (path): Set to /usr/local/etc/Julian.conf by default.
+# Julian_user:  The user account Julian daemon runs as. It uses 'root' user by default.
+# Julian_group: The group account Julian daemon runs as. It uses 'wheel' group by default.
+# Julian_datadir (str): Default to "/var/db/Julian". Base data directory.
+
+. /etc/rc.subr
+
+name=Julian
+rcvar=Julian_enable
+
+: ${Julian_enable:=NO}
+: ${Julian_config=/usr/local/etc/Julian.conf}
+: ${Julian_datadir=/var/db/Julian}
+: ${Julian_user="root"}
+: ${Julian_group="wheel"}
+
+required_files=${Julian_config}
+command=/usr/local/bin/Juliand
+Julian_chdir=${Julian_datadir}
+pidfile="${Julian_datadir}/Juliand.pid"
+stop_cmd=Julian_stop
+command_args="-conf=${Julian_config} -datadir=${Julian_datadir} -daemon -pid=${pidfile}"
+start_precmd="${name}_prestart"
+
+Julian_create_datadir()
+{
+	echo "Creating data directory"
+	eval mkdir -p ${Julian_datadir}
+	[ $? -eq 0 ] && chown -R ${Julian_user}:${Julian_group} ${Julian_datadir}
+}
+
+Julian_prestart()
+{
+	if [ ! -d "${Julian_datadir}/." ]; then
+		Julian_create_datadir || return 1
+	fi
+}
+
+Julian_requirepidfile()
+{
+	if [ ! "0`check_pidfile ${pidfile} ${command}`" -gt 1 ]; then
+		echo "${name} not running? (check $pidfile)."
+		exit 1
+	fi
+}
+
+Julian_stop()
+{
+    Julian_requirepidfile
+
+	echo "Stopping ${name}."
+	eval ${command} -conf=${Julian_config} -datadir=${Julian_datadir} stop
+	wait_for_pids ${rc_pid}
+}
+
+load_rc_config $name
+run_rc_command "$1"

@@ -1,0 +1,2 @@
+debian/bin/Juliand usr/bin
+src/Juliand usr/lib/Julian

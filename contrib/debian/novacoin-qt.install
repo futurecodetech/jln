@@ -1,0 +1,5 @@
+Julian-qt usr/bin
+share/pixmaps/Julian32.xpm usr/share/pixmaps
+share/pixmaps/Julian80.xpm usr/share/pixmaps
+debian/Julian-qt.desktop usr/share/applications
+debian/Julian-qt.protocol usr/share/kde4/services/
