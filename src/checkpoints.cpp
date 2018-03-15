@@ -47,7 +47,7 @@ namespace Checkpoints
     {
         MapCheckpoints& checkpoints = (fTestNet ? mapCheckpointsTestnet : mapCheckpoints);
 
-       returb 0;//return checkpoints.rbegin()->first;
+       return 0;//return checkpoints.rbegin()->first;
     }
 
     unsigned int GetLastCheckpointTime()
