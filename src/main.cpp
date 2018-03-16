@@ -2734,7 +2734,7 @@ bool LoadBlockIndex(bool fAllowNew)
         if (!fAllowNew)
             return false;
 
-        const char* pszTimestamp = "THe kinslayer is coming... BOOM ... JLN";
+        const char* pszTimestamp = "THe KnightMare is coming... BOOM ... JLN";
         CTransaction txNew;
         txNew.nTime = 1518699922;
         txNew.vin.resize(1);
@@ -2748,7 +2748,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = 1518699922;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = !fTestNet ? 44355 : 39767;
+        block.nNonce   = !fTestNet ? 0 : 0;
 		
         if (block.GetHash() != hashGenesisBlock) {
 
@@ -2768,7 +2768,7 @@ bool LoadBlockIndex(bool fAllowNew)
         block.print();
 
         //// debug print
-        assert(block.hashMerkleRoot == uint256("0xa3c9861ba82f15d7bf96335f598e59e8542f1277df0dbca9030252754d75ba48"));
+        assert(block.hashMerkleRoot == uint256(""));
         
 		if (!fTestNet)
 			assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));

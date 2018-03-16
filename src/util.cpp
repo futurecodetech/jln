@@ -1179,8 +1179,8 @@ void createConf()
 #endif
     pConf << "rpcuser=user\nrpcpassword="
             + randomStrGen(15)
-            + "\nrpcport=50708"
-            + "\nport=50707"
+            + "\nrpcport=50718"
+            + "\nport=50717"
             + "\n#(0=off, 1=on) daemon - run in the background as a daemon and accept commands"
             + "\ndaemon=0"
             + "\n#(0=off, 1=on) server - accept command line and JSON-RPC commands"
