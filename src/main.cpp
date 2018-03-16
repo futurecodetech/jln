@@ -1057,6 +1057,8 @@ int64_t GetProofOfWorkReward(unsigned int nBits, int64_t nFees, int nHeight)
     int64_t nSubsidy = 0 * COIN;
 	
 	if (nHeight == 1)
+		return 1 * COIN;
+	if (nHeight == 2)
 		return 5700000 * COIN;
 	if (nHeight <= 262800)
 		return 2.02435315 * COIN;
