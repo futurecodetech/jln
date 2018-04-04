@@ -1060,7 +1060,7 @@ int64_t GetProofOfWorkReward(unsigned int nBits, int64_t nFees, int nHeight)
 		return 1 * COIN;
 	if (nHeight == 2)
 		return 5700000 * COIN;
-	if (nHeight <= 262800)
+	if (nHeight <= 6570000)
 		return 2.02435315 * COIN;
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRId64 "\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
